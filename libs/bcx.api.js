@@ -13,7 +13,7 @@ let timer = null
 let requestSeconds = 0
 
 // 浏览器插件链接 请求最大秒数
-let requestSecondsMax = 3
+let requestSecondsMax = 7
 
 
 // bcx对象初始化
@@ -107,30 +107,30 @@ export let browserConnect = function (){
 }
 
 // 桌面钱包链接
-export let desktopConnect = function () {
-  Cocosjs.plugins(new CocosBCX())
-  Cocosjs.cocos.connect('My-App').then(connected => {
-    if (!connected) {
-      Message({
-        duration: 1200,
-        message: '链接失败，请检查桌面钱包是否正常打开',
-        type: 'error',
-      })
-      return
-    } else {
-      const cocos = Cocosjs.cocos
-      bcx = cocos.cocosBcx(bcx)
-      bcx.getAccountInfo().then(res => {
-        // window.account_name = res.account_name
-        cacheSession.set(cacheKey.accountName, res[cacheKey.accountName])
-        cacheSession.remove(cacheKey.myWorldView)
-      }).catch(function (err) {
-      })
-    }
+// export let desktopConnect = function () {
+//   Cocosjs.plugins(new CocosBCX())
+//   Cocosjs.cocos.connect('My-App').then(connected => {
+//     if (!connected) {
+//       Message({
+//         duration: 1200,
+//         message: '链接失败，请检查桌面钱包是否正常打开',
+//         type: 'error',
+//       })
+//       return
+//     } else {
+//       const cocos = Cocosjs.cocos
+//       bcx = cocos.cocosBcx(bcx)
+//       bcx.getAccountInfo().then(res => {
+//         // window.account_name = res.account_name
+//         cacheSession.set(cacheKey.accountName, res[cacheKey.accountName])
+//         cacheSession.remove(cacheKey.myWorldView)
+//       }).catch(function (err) {
+//       })
+//     }
     
-  }).catch(function (err) {
-  })
-}
+//   }).catch(function (err) {
+//   })
+// }
 
 // 查询开发者关联的世界观
 export let queryNHCreator = function () {

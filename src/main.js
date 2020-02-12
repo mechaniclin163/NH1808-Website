@@ -16,20 +16,6 @@ import '../libs/core.min'
 import '../libs/plugin.min'
 import { initBcx, browserConnect, desktopConnect } from '../libs/bcx.api'
 
-initBcx()
-// browserConnect().then((res)=>{
-//   console.log('browserConnect success')
-// }).catch((err)=>{
-//   console.log('browserConnect fail')
-//   console.log(err)
-//   desktopConnect().then((res)=>{
-//     console.log('desktopConnect success')
-//     console.log(res)
-//   }).catch((err)=>{
-//     console.log('desktopConnect fail')
-//     console.log(err)
-//   })
-// })
 
 import {
   MenuItem,
@@ -62,11 +48,18 @@ const i18n = new VueI18n({
 
 Vue.config.productionTip = false
 
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  i18n,
-  router,
-  components: { App },
-  template: '<App/>'
+
+
+
+browserConnect().then((res)=>{
+  console.log('browserConnect success')
+  new Vue({
+    el: '#app',
+    i18n,
+    router,
+    components: { App },
+    template: '<App/>'
+  })
 })
+/* eslint-disable no-new */
+

@@ -104,7 +104,9 @@ export default {
         queryAssets('').then(function (res) {
           console.log('------------------')
           console.log(res)
-          _this.unitList = res.data
+          _this.unitList = res.data.filter( item => {
+            return item.symbol != "GAS"
+          })
           _this.currentUnit = res.data[0].symbol
         })
       },
